@@ -69,6 +69,7 @@ async function savePresupuesto() {
 
     const result = await res.json(); //extract JSON from the http response
     console.log(result);
+    alert('Presupuesto guardado con exito')
     window.location.href = "http://localhost:5500/public/index.html";
 }
 
