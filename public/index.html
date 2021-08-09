@@ -33,7 +33,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./config.html">Configuración</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" onclick="signOut()" href="#">Salir</a>
@@ -44,7 +47,7 @@
     </nav>
     <div class="container">
       <h1>Presupuestos</h1>
-      <button class="btn btn-success">Nuevo presupuesto +</button>
+      <button class="btn btn-success" onclick="newPresupuesto()">Nuevo presupuesto +</button>
       <table class="table">
         <thead>
           <tr>
@@ -57,7 +60,7 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="rowPresupuesto">
           <!-- <tr>
             <th scope="row">1</th>
             <td>07/08/2021</td>
@@ -67,9 +70,6 @@
             <td><button class="btn btn-danger">Eliminar</button></td>
             <td><button class="btn btn-info">Enviar</button></td>
           </tr> -->
-          <tr id="rowPresupuesto">
-
-          </tr>
           <template id="template-presupuesto">
             <tr>
               <th scope="row">1</th>
@@ -78,7 +78,7 @@
               <td>1.0</td>
               <td><button class="btn btn-warning">Editar</button></td>
               <td><button class="btn btn-danger">Eliminar</button></td>
-              <td><button class="btn btn-info">Enviar</button></td>
+              <td><button class="btn btn-info" onclick="sendPresupuesto()">Enviar</button></td>
             </tr>
           </template>
         </tbody>

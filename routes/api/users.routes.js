@@ -26,15 +26,38 @@ router.post("/login",  async (req, res) => {
     const user = await Usuario.findOne({ where: { email: req.body.email } });
     console.log(req.body.email)
     if (user) {
+      Usuario
       const iguales = bcrypt.compareSync(req.body.password, user.password);
       if (iguales) {
         let token = await usuariosService.generaToken(req.body);
-        res.json({token:token});
+        res.json({usuario:user,token:token});
       } else {
         res.json("Usuario o contraseña no coinciden");
       }
     } else {
         res.json("Usuario o contraseña no coinciden");
+    }
+    
+  } catch (error) {
+    res
+      .status(400)
+      .render("404", {
+        msj: error.message,
+        titulo: "Error al realizar su registro",
+      });
+  }
+});
+
+router.put("/changePass",  async (req, res) => {
+  try {
+    const user = await Usuario.findOne({ where: { email: req.body.email } });
+    console.log(req.body.email)
+    if (user) {
+      user.password = bcrypt.hashSync(req.body.password, 10);
+      await user.save();
+      res.json(user);
+    } else {
+        res.json("Usuario no encontrado");
     }
     
   } catch (error) {

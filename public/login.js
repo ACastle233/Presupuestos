@@ -15,12 +15,13 @@ function signIn() {
         body: JSON.stringify({email: user, password: pass})
       });
       const result = await res.json(); //extract JSON from the http response
-      console.log(result);
+      console.log(result.usuario);
       if(result.token){
         localStorage.setItem("token", result.token)
+        localStorage.setItem("usuario", JSON.stringify(result.usuario))
         window.location.href = "http://localhost:5500/public/index.html";
       }else{
-        window.location.href = "http://localhost:5500/public/llogin.html"
+        window.location.reload();
       }
     };
     userAction();

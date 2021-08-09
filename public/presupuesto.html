@@ -11,6 +11,12 @@
 <body>
     <div class="container">
         <h3 class="mt-3">Resumen financiero</h3>
+
+        <label for="exampleInputEmail1">Nombre del proyecto</label>
+            <input type="email" class="form-control" id="nameProject" aria-describedby="emailHelp" placeholder="Nombre del proyecto">
+        <label for="exampleInputEmail1">Versión del proyecto</label>
+            <input type="email" class="form-control" id="versionProject" aria-describedby="emailHelp" placeholder="1.0.0">
+    
         <label for="exampleInputEmail1">Ventas</label>
             <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="" readonly>
             <label for="exampleInputEmail1">Costos</label>
@@ -141,6 +147,36 @@
         <div class="my-3">
             <h3>Costos directos</h3>
             <button class="btn btn-success">Agregar fila +</button>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Titulos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Concepto</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total</th>
+                  </tr>
+
+                  <tr id="rowPresupuesto">
+        
+                  </tr>
+                  <template id="template-presupuesto">
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>07/08/2021</td>
+                      <td>E-Commerce</td>
+                      <td>1.0</td>
+                      <td><button class="btn btn-warning">Editar</button></td>
+                      <td><button class="btn btn-danger">Eliminar</button></td>
+                      <td><button class="btn btn-info">Enviar</button></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
         </div>
 
         <div class="my-3">
@@ -164,8 +200,8 @@
         </div>
 
         <div class="my-3">
-            <button class="btn btn-primary">Guardar</button>
-            <button class="btn btn-danger">Cancelar</button>
+            <button class="btn btn-primary" onclick="savePresupuesto()">Guardar</button>
+            <button class="btn btn-danger" onclick="cancelPresupuesto()">Cancelar</button>
         </div>
 
     </div>
