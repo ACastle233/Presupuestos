@@ -59,14 +59,7 @@ async function savePresupuesto() {
 
     let name = document.getElementById('nameProject').value;
     let version = document.getElementById('versionProject').value;
-    const res = await fetch(`http://localhost:3000/api/presupuestos`, {
-        method: "POST", // include, *same-origin, omit
-        headers: {
-          "Content-Type": "application/json;charset=UTF-8"
-        },
-        body: JSON.stringify({proyecto: name, version: version})
-      });
-
+    const res = await postRequestBack('presupuestos', {proyecto: name, version: version})
     const result = await res.json(); //extract JSON from the http response
     console.log(result);
     alert('Presupuesto guardado con exito')

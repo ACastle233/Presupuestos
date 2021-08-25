@@ -11,7 +11,7 @@ exports.login = async (req,res) =>{
           
           const iguales = bcrypt.compareSync(req.body.password, user.password);
           if (iguales) {
-            let token = await usuariosService.generaToken(req.body);
+            let token = await usuariosService.generaToken({user: req.body.email, id: user.id});
             res.json({usuario:user,token:token});
           } else {
             res.json("Usuario o contraseña no coinciden");

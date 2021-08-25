@@ -24,8 +24,7 @@ function signOut() {
 }
 
 async function getPresupuestos() {
-  let res = await fetch("http://localhost:3000/api/presupuestos");
-  let resultaData = await res.json();
+  let resultaData = await getRequestBack('presupuestos')
 
   console.log(resultaData);
   for (let j = 0; j < resultaData.length; j++) {

@@ -1,6 +1,7 @@
 //Importo los modulos necesarios
 //const dbUsuarios = require('../db/dbUsuarios')
-const jwt = require('jsonwebtoken')
+
+const { generaTokenJWT } = require('../auth/auth')
 
 
 //Exporto los modulos de trabajo
@@ -53,9 +54,7 @@ const jwt = require('jsonwebtoken')
 // }
 
 module.exports.generaToken = async (data)=> {
-    const resultado = jwt.sign({
-        data} , process.env.SECRET_KEY 
-    ) //Tiempo maximo 15 minutos de validez
+    generaTokenJWT(data) //Tiempo maximo 15 minutos de validez
     return resultado
 }
 

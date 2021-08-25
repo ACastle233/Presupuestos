@@ -21,13 +21,7 @@ async function changePass() {
     if(pass !== confirmPass){
       alert('Las contraseñas no coinciden')
     }else{
-      const res = await fetch(`http://localhost:3000/api/usuarios/changePass`, {
-          method: "PUT", // include, *same-origin, omit
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8"
-          },
-          body: JSON.stringify({email: user.email, password: pass})
-        });
+        const res = await putRequestBack('usuarios/changePass', {email: user.email, password: pass})
         const result = await res.json(); //extract JSON from the http response
         console.log(result);
         window.location.href = 'http://localhost:5500/public/index.html';

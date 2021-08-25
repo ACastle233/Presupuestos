@@ -28,8 +28,9 @@ exports.updatePresupuesto = async (req,res)=>{
 
 exports.deletePresupuesto = async (req,res)=>{
     try {
-        await eliminaPresupuestos(req.params.presupuestoIdv)
+        console.log(req.params.presupuestoId)
+        await eliminaPresupuestos(req.params.presupuestoId)
         res.json ({ success: 'Se ha eliminado el registro con éxito' })
     } catch (error) {
-        res.status(400).render('404', {msj: error.message , titulo: 'No se ha podido eliminar'})
+        res.status(400).json('404', {msj: error.message , titulo: 'No se ha podido eliminar'})
     }}
